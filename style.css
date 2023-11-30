@@ -73,17 +73,7 @@ body{
   margin-left: 0px;
 }
 
-@media screen and (max-width: 900px) {
-  .carousel img{
-    width: calc(100% );
-  }
-}
 
-@media screen and (max-width: 550px) {
-  .carousel img{
-    width: 100%;
-  }
-}
 
 
 .dashs {
@@ -97,12 +87,36 @@ body{
 }
 
 .stories-dash {
-   background-color: gray;
-   height: 5px;
+    height:20px;
    cursor: pointer;
    transition: background-color 0.3s ease-in-out;
 }
 
-.active {
+.visable {
+    background-color: gray;
+    height:5px;
+    width: 100%;
+}
+
+.active .visable {
    background-color: rgb(23, 23, 23);
 }
+
+@media screen and (max-width: 900px) {
+ 
+    .carousel img{
+      width: calc(100% );
+    }
+  }
+  
+  @media screen and (max-width: 550px) {
+    .wrapper {
+        width: 100%;
+    }
+    .carousel {
+        width: 100%;
+    }
+    .carousel img{
+      width: 100%;
+    }
+  }
