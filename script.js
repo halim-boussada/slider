@@ -24,12 +24,22 @@ var gallery = [
     text: "hahah mmmmm",
   },
 ];
+var indicator = 0;
 
-function render() {
+function renderDash() {
   var dashs = ``;
   for (var i = 0; i < gallery.length; i++) {
-    dashs += `<div class="stories-dash"></div>`;
+    if (i === indicator) {
+      dashs += `<div class="stories-dash active" onclick="changeByIndicator(${i})"><div class="visable"></div></div>`;
+    } else {
+      dashs += `<div class="stories-dash" onclick="changeByIndicator(${i})"><div class="visable"></div></div>`;
+    }
   }
+  return dashs;
+}
+
+function render() {
+  var dashs = renderDash();
   var wrapper = document.getElementById("wrapper");
   wrapper.innerHTML = `
     <div class="carousel" id="carousel"></div>
@@ -76,6 +86,18 @@ arrowIcons.forEach((icon) => {
   });
 });
 
+function changeByIndicator(clickedIndicator) {
+  console.log(clickedIndicator, indicator);
+  let firstImgWidth = firstImg.clientWidth + 14;
+  if (clickedIndicator > indicator) {
+    carousel.scrollLeft += firstImgWidth * (clickedIndicator - indicator);
+  } else if (indicator > clickedIndicator) {
+    carousel.scrollLeft -= firstImgWidth * (indicator - clickedIndicator);
+  }
+  indicator = clickedIndicator;
+  document.getElementById("dashs").innerHTML = renderDash();
+}
+
 const autoSlide = () => {
   // if there is no image left to scroll then return from here
   if (
@@ -91,12 +113,24 @@ const autoSlide = () => {
 
   if (carousel.scrollLeft > prevScrollLeft) {
     // if user is scrolling to the right
+    if (positionDiff > firstImgWidth / 3) {
+      indicator++;
+      console.log(indicator);
+      document.getElementById("dashs").innerHTML = renderDash();
+    }
+
     return (carousel.scrollLeft +=
       positionDiff > firstImgWidth / 3 ? valDifference : -positionDiff);
+  } else {
+    if (positionDiff > firstImgWidth / 3) {
+      indicator--;
+      console.log(indicator);
+      document.getElementById("dashs").innerHTML = renderDash();
+    }
+    carousel.scrollLeft -=
+      positionDiff > firstImgWidth / 3 ? valDifference : -positionDiff;
   }
   // if user is scrolling to the left
-  carousel.scrollLeft -=
-    positionDiff > firstImgWidth / 3 ? valDifference : -positionDiff;
 };
 
 const dragStart = (e) => {
