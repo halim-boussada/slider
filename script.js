@@ -2,32 +2,38 @@ var gallery = [
   {
     url: "https://fabskill.s3.eu-west-3.amazonaws.com/avatars/9c40f5341269a0a772d1670eb52d76b1.png",
     text: "hahahaha",
+    text2: "daldazklzd",
   },
   {
     url: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
     text: "hahahah 22",
+    text2: "daldazklzd",
   },
   {
     url: "https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?size=626&ext=jpg&ga=GA1.1.1803636316.1701043200&semt=sph",
     text: "hahah mmmmm",
+    text2: "daldadazdazzklzd",
   },
   {
     url: "https://fabskill.s3.eu-west-3.amazonaws.com/avatars/9c40f5341269a0a772d1670eb52d76b1.png",
     text: "hahahaha",
+    text2: "daldazklzd",
   },
   {
     url: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
     text: "hahahah 22",
+    text2: "daldazkldzadazpodazzd",
   },
   {
     url: "https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?size=626&ext=jpg&ga=GA1.1.1803636316.1701043200&semt=sph",
     text: "hahah mmmmm",
+    text2: "daldazklzd",
   },
 ];
 var indicator = 0;
 
 function renderDash() {
-  var dashs = ``;
+  var dashs = `<h1 class="text-story">${gallery[indicator].text}</h1><h2 class="text-story2">${gallery[indicator].text2}</h2>`;
   for (var i = 0; i < gallery.length; i++) {
     if (i === indicator) {
       dashs += `<div class="stories-dash active" onclick="changeByIndicator(${i})"><div class="visable"></div></div>`;
