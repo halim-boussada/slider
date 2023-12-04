@@ -6,6 +6,7 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+
 body{
   display: flex;
   padding: 0 35px;
@@ -55,6 +56,18 @@ body{
   scroll-behavior: smooth;
   position: relative;
 }
+.text-story {
+  position: absolute;
+  top: 60px;
+  width: 100%;
+  z-index: 999;
+}
+.text-story2{
+  position: absolute;
+  top: 150px;
+  width: 100%;
+  z-index: 999;
+}
 .carousel.dragging{
   cursor: grab;
   scroll-behavior: auto;
@@ -94,6 +107,7 @@ body{
 
 .visable {
     background-color: gray;
+    border-radius: 1em;
     height:5px;
     width: 100%;
 }
